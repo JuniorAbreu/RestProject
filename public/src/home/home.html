@@ -23,7 +23,6 @@
                 <tr>
                   <th scope="col">Description</th>
                   <th scope="col">Command</th>
-                  <th scope="col">User</th>
                   <th scope="col">Date</th>
                 </tr>
               </thead>
@@ -31,7 +30,6 @@
                 <tr ng-repeat="data in commands">
                   <td scope="row">{{data.description}}</td>
                   <td scope="row">{{data.command}}</td>
-                  <td scope="row">{{data.user}}</td>
                   <td scope="row">{{data.date | date :  "yyyy/MM/dd - HH:mm:ss"}}</td>
                 </tr>
                 <tr ng-if="commands.length === 0">
