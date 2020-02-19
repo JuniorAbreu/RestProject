@@ -11,14 +11,16 @@ app.controller('HomeController', function ($scope, $http, $q, $timeout) {
             if (data && data.status === 200) {
                 showSuccessMessage();
                 listAll();
+            } else {
+                showErrorMessage("Not able to open browser");
             }
-        }, err => { showErrorMessage() });
+        }, err => { showErrorMessage(err) });
     }
 
     function listAll() {
         processGET('/commands').then(data => {
             $scope.commands = data.data ? data.data : $scope.commands;
-        }, err => { showErrorMessage() });
+        }, err => { showErrorMessage(err) });
     }
 
     function processGET(url) {
@@ -52,10 +54,10 @@ app.controller('HomeController', function ($scope, $http, $q, $timeout) {
         $timeout(() => { $scope.messages.success = false }, 4000);;
     }
 
-    function showErrorMessage() {
+    function showErrorMessage(error) {
         $scope.messages.error = true;
         $timeout(() => { $scope.messages.error = false }, 4000);;
-        console.error(err);
+        console.error(error);
     }
 
     listAll();
