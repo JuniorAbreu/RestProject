@@ -5,12 +5,9 @@ module.exports = app => {
     const mockedUser = "W Junior";
 
     return {
-        listAll: (req, res) => {
-            service.listAll().then( data => {
-                res.send(data);
-            }, err => {
-                res.send(err);
-            });
+        listAll: async (req, res) => {
+            let data = service.listAll();
+            res.send(await data);
         },
 
         openBrowser: (req, res) => {
