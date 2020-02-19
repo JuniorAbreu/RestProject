@@ -4,7 +4,7 @@
   "description": "It's a hiring test project",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node app.js",
     "tests": "jest"
   },
   "author": "Waldemario Junior",

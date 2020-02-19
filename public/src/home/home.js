@@ -8,20 +8,17 @@ app.controller('HomeController', function ($scope, $http, $q, $timeout) {
 
     $scope.runScript = () => {
         processPOST('/openBrowser').then(data => {
-            $scope.messages.success = true;
-            $timeout(() => { $scope.messages.success = false }, 4000);;
-            listAll();
-        }, err => {
-            $scope.messages.error = true;
-            $timeout(() => { $scope.messages.error = false }, 4000);;
-            console.error(err);
-        });
+            if (data && data.status === 200) {
+                showSuccessMessage();
+                listAll();
+            }
+        }, err => { showErrorMessage() });
     }
 
     function listAll() {
         processGET('/commands').then(data => {
             $scope.commands = data.data ? data.data : $scope.commands;
-        })
+        }, err => { showErrorMessage() });
     }
 
     function processGET(url) {
@@ -48,6 +45,17 @@ app.controller('HomeController', function ($scope, $http, $q, $timeout) {
             }
         );
         return deferred.promise;
+    }
+    
+    function showSuccessMessage() {
+        $scope.messages.success = true;
+        $timeout(() => { $scope.messages.success = false }, 4000);;
+    }
+
+    function showErrorMessage() {
+        $scope.messages.error = true;
+        $timeout(() => { $scope.messages.error = false }, 4000);;
+        console.error(err);
     }
 
     listAll();
