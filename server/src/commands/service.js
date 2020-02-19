@@ -34,9 +34,6 @@ module.exports =  {
             data.push(processCommand(user, "page.keyboard.press(String.fromCharCode(13))", 'Simulate enter press to search for results.'));
 
             await recordCommands(data);
-
-            const elementTextResult = await page.$eval('input[name=q]', el => el.textContent.trim());
-            console.log(elementTextResult);
             await browser.close();
 
             return {status: 200};

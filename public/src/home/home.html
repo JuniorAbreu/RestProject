@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h1 class="display-4">Itaú hiring test</h1>
+        <p class="lead">This is a simple application that demonstrates REST API calls and e2e tests.</p>
+        <hr class="my-4">
+        <p>When you click this button, we open a test browser and do some fun stuffs. The results will appear in the table below.</p>
+        <button class="btn btn-primary" ng-click="runScript()"> Run Script</button>
+    </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="alert alert-success" role="alert" ng-if="messages.success">
+              Scripts successfully executed!
+            </div>
+            <div class="alert alert-danger" role="alert" ng-if="messages.error">
+              Error trying to run scripts...
+            </div>
+          </div>
+          <div class="col-12">
+            <h3>Results</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Description</th>
+                  <th scope="col">Command</th>
+                  <th scope="col">User</th>
+                  <th scope="col">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="data in commands">
+                  <td scope="row">{{data.description}}</td>
+                  <td scope="row">{{data.command}}</td>
+                  <td scope="row">{{data.user}}</td>
+                  <td scope="row">{{data.date | date :  "yyyy/MM/dd - HH:mm:ss"}}</td>
+                </tr>
+                <tr ng-if="commands.length === 0">
+                  <td>
+                    <i class="text-center"> No data available yet... </i>
+                  </td> 
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+</div>

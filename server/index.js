@@ -5,7 +5,7 @@ module.exports = function(app){
 	var session 	= require('express-session');
 	var fs 			= require('fs');
 	var cors 		= require('cors');
-    var port = 9454;
+    // var port = 9454;
 
 	app.use(cors());
 
@@ -16,9 +16,9 @@ module.exports = function(app){
 	app.use(session({resave: 'true', saveUninitialized: 'true' , secret: 'keyboard cat'}));
 
 	// Disable http - only https is enabled
-	app.listen(port, function() {
-		console.info("To view your app, open this link in your browser: http://localhost:" + port);
-	});
+	// app.listen(port, function() {
+	// 	console.info("To view your app, open this link in your browser: http://localhost:" + port);
+	// });
 
     // running LOCALLY
     app.set('port_https', 9443);
