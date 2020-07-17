@@ -15,7 +15,7 @@ This is a simple application that demonstrates REST API calls and e2e tests (onl
 
 # Built with
 - Node.js;
-- Angular;
+- Angular.js;
 - Bootstrap 4;
 - Puppeteer;
 - Jest (test).
