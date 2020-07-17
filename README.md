@@ -18,4 +18,4 @@ This is a simple application that demonstrates REST API calls and e2e tests (onl
 - Angular.js;
 - Bootstrap 4;
 - Puppeteer;
-- Jest (test).
+- Jest.
